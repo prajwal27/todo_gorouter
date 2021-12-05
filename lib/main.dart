@@ -43,7 +43,7 @@ class AppWidget extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'TODOs',
             theme: ThemeData(
-              primarySwatch: Colors.blue,
+              primarySwatch: Colors.green,
             ),
           );
         },

@@ -24,7 +24,6 @@ class _CreateScreenState extends State<CreateScreen> {
         elevation: 0,
         centerTitle: true,
         automaticallyImplyLeading: true,
-        backgroundColor: Colors.lightBlue,
         title: const Text(
           'Create',
           style: TextStyle(
@@ -32,7 +31,7 @@ class _CreateScreenState extends State<CreateScreen> {
         ),
         leading: GestureDetector(
           onTap: () {
-            context.pop();
+            context.goNamed(pending);
           },
           child: const Icon(
             Icons.arrow_back, // add custom icons also
@@ -58,7 +57,7 @@ class _CreateScreenState extends State<CreateScreen> {
         child: Container(
           height: 56,
           decoration: BoxDecoration(
-              color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+              color: Colors.green, borderRadius: BorderRadius.circular(20)),
           child: TextButton(
             onPressed: () {
               String text = textController.text.trim();
@@ -66,7 +65,7 @@ class _CreateScreenState extends State<CreateScreen> {
                 showSnackBar('Enter text before Submitting', context);
               } else {
                 Provider.of<TodoState>(context, listen: false).addTodo(text);
-                context.pop();
+                context.goNamed(pending);
               }
             },
             child: const Text(

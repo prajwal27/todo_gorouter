@@ -30,9 +30,8 @@ class PendingScreen extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    final TodoItem item = todoItems[index];
-                    context
-                        .pushNamed(detail, params: {'id': item.id.toString()});
+                    final TodoItem item = todoItems[position];
+                    context.goNamed(detail, params: {'id': item.id.toString()});
                   },
                 );
               },

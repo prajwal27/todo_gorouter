@@ -84,7 +84,6 @@ class AppRouter {
       ),
     ),
     redirect: (state) {
-      print('state: ${state.getString}');
       final loginLoc = state.namedLocation(login);
       final loggingIn = state.subloc == loginLoc;
 

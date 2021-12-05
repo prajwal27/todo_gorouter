@@ -19,7 +19,6 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.lightBlue,
         title: const Text(
           'LoginScreen',
           style: TextStyle(
@@ -63,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 50,
               width: 250,
               decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+                  color: Colors.green, borderRadius: BorderRadius.circular(20)),
               child: TextButton(
                 onPressed: () {
                   Provider.of<AuthState>(context, listen: false)
