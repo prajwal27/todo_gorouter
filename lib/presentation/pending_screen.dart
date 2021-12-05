@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_gorouter/model/todo_item.dart';
 import 'package:todo_gorouter/state/todo_state.dart';
-import 'package:todo_gorouter/utils/constants.dart';
 
 class PendingScreen extends StatelessWidget {
   const PendingScreen({Key? key, required this.index}) : super(key: key);
@@ -31,7 +29,6 @@ class PendingScreen extends StatelessWidget {
                   ),
                   onTap: () {
                     final TodoItem item = todoItems[position];
-                    context.goNamed(detail, params: {'id': item.id.toString()});
                   },
                 );
               },

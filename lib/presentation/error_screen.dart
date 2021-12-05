@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:todo_gorouter/utils/constants.dart';
 
 class ErrorScreen extends StatelessWidget {
   const ErrorScreen({
@@ -23,9 +21,7 @@ class ErrorScreen extends StatelessWidget {
               fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white),
         ),
         leading: GestureDetector(
-          onTap: () {
-            context.goNamed(initial);
-          },
+          onTap: () {},
           child: const Icon(
             Icons.arrow_back, // add custom icons also
           ),

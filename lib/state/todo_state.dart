@@ -15,6 +15,7 @@ class TodoState extends ChangeNotifier {
       status: Status.pending,
     );
     items.add(todoItem);
+    idCounter++;
     notifyListeners();
   }
 
@@ -35,17 +36,6 @@ class TodoState extends ChangeNotifier {
 
   List<TodoItem> getItems(Status status) {
     return items.where((element) => element.status == status).toList();
-  }
-
-  bool deleteItem(int id) {
-    try {
-      items.removeWhere((element) => element.id == id);
-      notifyListeners();
-    } on Exception catch (e) {
-      print('Exception deleting item with id:$id, error ${e.toString()}');
-      return false;
-    }
-    return true;
   }
 
   void clearAllItems() {

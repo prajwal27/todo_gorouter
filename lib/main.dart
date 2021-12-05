@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:todo_gorouter/router.dart';
+import 'package:todo_gorouter/presentation/login_screen.dart';
 import 'package:todo_gorouter/state/auth_state.dart';
 import 'package:todo_gorouter/state/todo_state.dart';
 
@@ -25,10 +25,6 @@ class AppWidget extends StatelessWidget {
           lazy: false,
           create: (BuildContext createContext) => authState,
         ),
-        Provider<AppRouter>(
-          lazy: false,
-          create: (BuildContext createContext) => AppRouter(authState),
-        ),
         ChangeNotifierProvider<TodoState>(
           lazy: false,
           create: (BuildContext createContext) => TodoState(),
@@ -36,15 +32,13 @@ class AppWidget extends StatelessWidget {
       ],
       child: Builder(
         builder: (BuildContext context) {
-          final router = Provider.of<AppRouter>(context, listen: false).router;
-          return MaterialApp.router(
-            routeInformationParser: router.routeInformationParser,
-            routerDelegate: router.routerDelegate,
+          return MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'TODOs',
             theme: ThemeData(
               primarySwatch: Colors.green,
             ),
+            home: const LoginScreen(),
           );
         },
       ),

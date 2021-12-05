@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_gorouter/model/todo_item.dart';
 import 'package:todo_gorouter/state/todo_state.dart';
@@ -33,9 +32,7 @@ class DetailScreen extends StatelessWidget {
               fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white),
         ),
         leading: GestureDetector(
-          onTap: () {
-            context.go('/pending');
-          },
+          onTap: () {},
           child: const Icon(
             Icons.arrow_back, // add custom icons also
           ),
@@ -73,11 +70,6 @@ class DetailScreen extends StatelessWidget {
                 child: TextButton(
                   onPressed: () {
                     Status toBeChangedStatus = changeStatus(item.status);
-                    Provider.of<TodoState>(context, listen: false)
-                        .changeStatus(item.id, toBeChangedStatus);
-
-                    context
-                        .goNamed(routeAfterChangingStatus(toBeChangedStatus));
                   },
                   child: Text(
                     'Change to ${changeStatus(item.status).getValue}',

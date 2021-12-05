@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 import 'package:todo_gorouter/presentation/pending_screen.dart';
-import 'package:todo_gorouter/state/auth_state.dart';
-import 'package:todo_gorouter/state/todo_state.dart';
 import 'package:todo_gorouter/utils/constants.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -48,16 +44,12 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          'TODO App',
+          appTitle,
           style: TextStyle(
               fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white),
         ),
         leading: GestureDetector(
-          onTap: () {
-            Provider.of<TodoState>(context, listen: false).clearAllItems();
-            Provider.of<AuthState>(context, listen: false)
-                .updateLoginStatus(false);
-          },
+          onTap: () {},
           child: const Icon(
             Icons.logout, // add custom icons also
           ),
@@ -66,9 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
             child: GestureDetector(
-              onTap: () {
-                context.goNamed(create);
-              },
+              onTap: () {},
               child: const Icon(
                 Icons.note_add_outlined,
                 size: 26.0,
@@ -88,16 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
         unselectedItemColor: Colors.white24,
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              context.goNamed(pending);
-              break;
-            case 1:
-              context.goNamed(completed);
-              break;
-          }
-        },
+        onTap: (index) {},
       ),
       body: PendingScreen(
         index: _selectedIndex,

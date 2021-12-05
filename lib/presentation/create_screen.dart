@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
-import 'package:todo_gorouter/state/todo_state.dart';
 import 'package:todo_gorouter/utils/constants.dart';
 
 class CreateScreen extends StatefulWidget {
@@ -30,9 +27,7 @@ class _CreateScreenState extends State<CreateScreen> {
               fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white),
         ),
         leading: GestureDetector(
-          onTap: () {
-            context.goNamed(pending);
-          },
+          onTap: () {},
           child: const Icon(
             Icons.arrow_back, // add custom icons also
           ),
@@ -63,10 +58,7 @@ class _CreateScreenState extends State<CreateScreen> {
               String text = textController.text.trim();
               if (text.isEmpty) {
                 showSnackBar('Enter text before Submitting', context);
-              } else {
-                Provider.of<TodoState>(context, listen: false).addTodo(text);
-                context.goNamed(pending);
-              }
+              } else {}
             },
             child: const Text(
               'Submit',
