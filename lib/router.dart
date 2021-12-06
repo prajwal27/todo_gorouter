@@ -84,14 +84,16 @@ class AppRouter {
       ),
     ),
     redirect: (state) {
-      final loginLoc = state.namedLocation(login);
-      final loggingIn = state.subloc == loginLoc;
-
       final loggedIn = authState.isAuthenticated;
-      final rootLoc = state.namedLocation(initial);
+      final goingToLogin = state.location == '/login';
 
-      if (!loggedIn && !loggingIn) return loginLoc;
-      if (loggedIn && loggingIn) return rootLoc;
+      // the user is not logged in and not headed to /login, they need to login
+      if (!loggedIn && !goingToLogin) return '/login';
+
+      // the user is logged in and headed to /login, no need to login again
+      if (loggedIn && goingToLogin) return '/';
+
+      // no need to redirect at all
       return null;
     },
   );

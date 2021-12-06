@@ -37,7 +37,7 @@ class DetailScreen extends StatelessWidget {
             context.go('/pending');
           },
           child: const Icon(
-            Icons.arrow_back, // add custom icons also
+            Icons.arrow_back,
           ),
         ),
       ),

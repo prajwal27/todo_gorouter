@@ -34,7 +34,7 @@ class _CreateScreenState extends State<CreateScreen> {
             context.goNamed(pending);
           },
           child: const Icon(
-            Icons.arrow_back, // add custom icons also
+            Icons.arrow_back,
           ),
         ),
       ),
