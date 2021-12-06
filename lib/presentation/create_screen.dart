@@ -29,7 +29,7 @@ class _CreateScreenState extends State<CreateScreen> {
         leading: GestureDetector(
           onTap: () {},
           child: const Icon(
-            Icons.arrow_back, // add custom icons also
+            Icons.arrow_back,
           ),
         ),
       ),

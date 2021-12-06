@@ -34,7 +34,7 @@ class DetailScreen extends StatelessWidget {
         leading: GestureDetector(
           onTap: () {},
           child: const Icon(
-            Icons.arrow_back, // add custom icons also
+            Icons.arrow_back,
           ),
         ),
       ),
@@ -68,9 +68,7 @@ class DetailScreen extends StatelessWidget {
                     color: Colors.green,
                     borderRadius: BorderRadius.circular(20)),
                 child: TextButton(
-                  onPressed: () {
-                    Status toBeChangedStatus = changeStatus(item.status);
-                  },
+                  onPressed: () {},
                   child: Text(
                     'Change to ${changeStatus(item.status).getValue}',
                     style: const TextStyle(color: Colors.white, fontSize: 24),
