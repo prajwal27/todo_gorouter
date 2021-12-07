@@ -48,6 +48,7 @@ class DetailScreen extends StatelessWidget {
                     onTap: () {
                       Provider.of<TodoState>(context, listen: false)
                           .changeStatus(item.id, Status.deleted);
+                      context.goNamed(deleted);
                     },
                     child: const Icon(
                       Icons.delete,

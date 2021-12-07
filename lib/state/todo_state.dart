@@ -14,6 +14,7 @@ class TodoState extends ChangeNotifier {
       message: message,
       status: Status.pending,
     );
+    idCounter++;
     items.add(todoItem);
     notifyListeners();
   }
