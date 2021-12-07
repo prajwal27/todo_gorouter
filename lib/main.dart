@@ -7,18 +7,22 @@ import 'package:todo_gorouter/state/todo_state.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final state = AuthState(await SharedPreferences.getInstance());
+  final SharedPreferences sharedPreferences =
+      await SharedPreferences.getInstance();
 
-  runApp(AppWidget(authState: state));
+  runApp(AppWidget(sharedPreferences: sharedPreferences));
 }
 
 class AppWidget extends StatelessWidget {
-  final AuthState authState;
+  final SharedPreferences sharedPreferences;
 
-  const AppWidget({Key? key, required this.authState}) : super(key: key);
+  const AppWidget({Key? key, required this.sharedPreferences})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final AuthState authState = AuthState(sharedPreferences);
+    final TodoState todoState = TodoState(sharedPreferences);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<AuthState>(
@@ -27,7 +31,7 @@ class AppWidget extends StatelessWidget {
         ),
         ChangeNotifierProvider<TodoState>(
           lazy: false,
-          create: (BuildContext createContext) => TodoState(),
+          create: (BuildContext createContext) => todoState,
         ),
       ],
       child: Builder(

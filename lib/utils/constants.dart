@@ -13,6 +13,7 @@ const String deleted = 'deleted';
 
 // key
 const String authKey = 'authKey';
+const String itemsKey = 'itemsKey';
 
 const String appTitle = 'TODOs';
 

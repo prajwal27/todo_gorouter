@@ -1,12 +1,19 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_gorouter/model/todo_item.dart';
+import 'package:todo_gorouter/utils/constants.dart';
 
 class TodoState extends ChangeNotifier {
   List<TodoItem> items = <TodoItem>[];
-
+  final SharedPreferences sharedPreferences;
   int idCounter = 1;
 
-  TodoState();
+  TodoState(this.sharedPreferences) {
+    getItemsFromDB();
+    idCounter = items.length + 1;
+  }
 
   void addTodo(String message) {
     TodoItem todoItem = TodoItem(
@@ -14,13 +21,15 @@ class TodoState extends ChangeNotifier {
       message: message,
       status: Status.pending,
     );
-    items.add(todoItem);
     idCounter++;
+    items.add(todoItem);
+    saveToDB();
     notifyListeners();
   }
 
   TodoItem? getItem(String? id) {
-    int index = items.indexWhere((element) => id == '${element.id}');
+    int index = items.indexWhere(
+        (element) => id == '${element.id}' && element.status != Status.deleted);
     return index == -1 ? null : items[index];
   }
 
@@ -30,6 +39,7 @@ class TodoState extends ChangeNotifier {
       return false;
     }
     items[index] = items[index].copyWith(status: status);
+    saveToDB();
     notifyListeners();
     return true;
   }
@@ -38,8 +48,26 @@ class TodoState extends ChangeNotifier {
     return items.where((element) => element.status == status).toList();
   }
 
+  void saveToDB() async {
+    String itemsString = jsonEncode(items);
+    sharedPreferences.setString(itemsKey, itemsString);
+  }
+
+  void getItemsFromDB() async {
+    String? itemsString = sharedPreferences.getString(itemsKey);
+
+    if (itemsString == null) {
+      items = <TodoItem>[];
+    } else {
+      items = (jsonDecode(itemsString) as List)
+          .map((e) => TodoItem.fromMap(e))
+          .toList();
+    }
+  }
+
   void clearAllItems() {
     items.clear();
+    sharedPreferences.clear();
     notifyListeners();
   }
 }

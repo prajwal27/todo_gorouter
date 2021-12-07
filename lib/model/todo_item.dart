@@ -31,6 +31,17 @@ class TodoItem {
       status: status ?? this.status,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {'id': id, 'message': message, 'status': status.index};
+  }
+
+  factory TodoItem.fromMap(Map<String, dynamic> map) {
+    return TodoItem(
+        id: map['id'],
+        message: map['message'],
+        status: Status.values[map['status']]);
+  }
 }
 
 enum Status {
