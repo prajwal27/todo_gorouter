@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_gorouter/state/auth_state.dart';
+import 'package:todo_gorouter/utils/constants.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         elevation: 0,
         title: const Text(
-          'LoginScreen',
+          appTitle,
           style: TextStyle(
               fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white),
         ),
@@ -69,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       .updateLoginStatus(true);
                 },
                 child: const Text(
-                  'LoginScreen',
+                  'Login',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),

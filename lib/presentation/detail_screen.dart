@@ -40,6 +40,23 @@ class DetailScreen extends StatelessWidget {
             Icons.arrow_back,
           ),
         ),
+        actions: [
+          item != null
+              ? Padding(
+                  padding: const EdgeInsets.only(right: 20.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      Provider.of<TodoState>(context, listen: false)
+                          .changeStatus(item.id, Status.deleted);
+                    },
+                    child: const Icon(
+                      Icons.delete,
+                      size: 26.0,
+                    ),
+                  ),
+                )
+              : const SizedBox.shrink(),
+        ],
       ),
       body: item == null
           ? const Center(

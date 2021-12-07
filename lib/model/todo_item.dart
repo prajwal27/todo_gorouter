@@ -36,4 +36,5 @@ class TodoItem {
 enum Status {
   pending,
   completed,
+  deleted,
 }
