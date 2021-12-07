@@ -31,12 +31,13 @@ class DeletedScreen extends StatelessWidget {
       body: todoItems.isNotEmpty
           ? ListView.builder(
               itemBuilder: (context, position) {
+                TodoItem item = todoItems[position];
                 return GestureDetector(
                   child: Card(
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
-                        todoItems[position].message,
+                        '${item.id}. ${item.message}',
                         style: const TextStyle(fontSize: 22.0),
                       ),
                     ),
