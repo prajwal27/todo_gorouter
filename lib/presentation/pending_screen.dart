@@ -13,30 +13,29 @@ class PendingScreen extends StatelessWidget {
     Status status = index == 0 ? Status.pending : Status.completed;
     final todoItems = Provider.of<TodoState>(context).getItems(status);
 
-    return Scaffold(
-      body: todoItems.isNotEmpty
-          ? ListView.builder(
-              itemBuilder: (context, position) {
-                return GestureDetector(
-                  child: Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        todoItems[position].message,
-                        style: const TextStyle(fontSize: 22.0),
-                      ),
+    return todoItems.isNotEmpty
+        ? ListView.builder(
+            itemBuilder: (context, position) {
+              TodoItem todoItem = todoItems[position];
+              return GestureDetector(
+                child: Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      '${todoItem.id}. ${todoItem.message}',
+                      style: const TextStyle(fontSize: 22.0),
                     ),
                   ),
-                  onTap: () {
-                    final TodoItem item = todoItems[position];
-                  },
-                );
-              },
-              itemCount: todoItems.length,
-            )
-          : const Center(
-              child: Text("No Items to show."),
-            ),
-    );
+                ),
+                onTap: () {
+                  final TodoItem item = todoItems[position];
+                },
+              );
+            },
+            itemCount: todoItems.length,
+          )
+        : const Center(
+            child: Text("No Items to show."),
+          );
   }
 }

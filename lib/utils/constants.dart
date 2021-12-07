@@ -8,6 +8,8 @@ const String create = 'create';
 const String pending = 'pending';
 const String completed = 'completed';
 const String detail = 'detail';
+const String homePending = 'homePending';
+const String deleted = 'deleted';
 
 // key
 const String authKey = 'authKey';
