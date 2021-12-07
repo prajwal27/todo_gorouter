@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:todo_gorouter/model/todo_item.dart';
 import 'package:todo_gorouter/state/todo_state.dart';
 
-class PendingScreen extends StatelessWidget {
-  const PendingScreen({Key? key, required this.index}) : super(key: key);
+class ListScreen extends StatelessWidget {
+  const ListScreen({Key? key, required this.index}) : super(key: key);
 
   final int index;
 

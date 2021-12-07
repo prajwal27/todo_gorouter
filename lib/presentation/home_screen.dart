@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_gorouter/presentation/pending_screen.dart';
+import 'package:todo_gorouter/presentation/list_screen.dart';
 import 'package:todo_gorouter/utils/constants.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
         selectedItemColor: Colors.white,
         onTap: (index) {},
       ),
-      body: PendingScreen(
+      body: ListScreen(
         index: _selectedIndex,
       ),
     );
