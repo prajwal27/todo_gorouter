@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_gorouter/model/todo_item.dart';
 import 'package:todo_gorouter/state/todo_state.dart';
@@ -23,9 +22,7 @@ class DeletedScreen extends StatelessWidget {
               fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white),
         ),
         leading: GestureDetector(
-          onTap: () {
-            context.pop();
-          },
+          onTap: () {},
           child: const Icon(
             Icons.arrow_back,
           ),
