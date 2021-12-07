@@ -61,7 +61,7 @@ class DetailScreen extends StatelessWidget {
       ),
       body: item == null
           ? const Center(
-              child: Text('No item found!'),
+              child: Text('The item is either deleted or does not exist.'),
             )
           : Center(
               child: Column(
